@@ -1,5 +1,11 @@
+# 版本 0.2.0 更新内容
+1. 废弃 5、发起文档对话 6、获取会话ws链接
+1. 文档的分类从只记录直接所属分类ID改为从上到下的分类ID路径，涉及：2、创建文档；4、更新文档
+1. 新增 8、批量操作文档的所属分类
+
 
 # 接口
+- 版本：0.2.0
 - 请求地址：--
 - 内容格式：Content-Type: applicaton/json
 - 响应：
@@ -59,7 +65,7 @@
 |字段名|类型|备注|
 |-|-|-|
 |domain_id|number|域ID|
-|cat_id|number|分类ID|
+|cat_id_path|[]number|分类ID路径|
 |private|bool|是否私密|
 |uuid|string|文档唯一ID|
 |url|string|文档链接|
@@ -94,7 +100,7 @@
 |字段名|类型|备注|
 |-|-|-|
 |domain_id|number|域ID|
-|cat_id|number|分类ID|
+|cat_id_path|[]number|分类ID路径|
 |private|bool|是否私密|
 |uuid|string|文档UUID|
 |url|string|文档链接|
@@ -107,7 +113,7 @@
 |job_id|number|任务ID|
 
 
-## 5、发起文档对话
+## ~~5、发起文档对话【已废弃】~~
 请求方式：POST
 - 参数
 
@@ -126,7 +132,7 @@
 |-|-|-|
 |job_id|number|任务ID|
 
-## 6、获取会话ws链接
+## ~~6、获取会话ws链接【已废弃】~~
 请求方式：POST
 - 参数
 
@@ -157,3 +163,19 @@
 |-|-|-|
 |status|number|0-未开始；1-正在执行；2-执行成功；3-执行失败；99-任务失败，等待人工处理|
 |step|number|当前进度|
+
+## 8、批量操作文档的所属分类
+请求方式：POST
+- 参数
+
+|字段名|类型|备注|
+|-|-|-|
+|domain_id|number|域ID|
+|cat_id_path|[]number|最新的所属分类ID路径|
+|uuids|[]string|文档UUID数组|
+
+- 返回
+
+|字段名|类型|备注|
+|-|-|-|
+|job_id|number|任务ID|
