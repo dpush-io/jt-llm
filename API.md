@@ -197,6 +197,7 @@
 |-|-|-|
 |message|string|发送的消息内容|
 |doc_range|object|回答需要查找的范围|
+|generalize|bool|是否泛化|
 |is_summary|bool|是否是总结模式(默认为否，如果message提问方式是总结类，则会自动切换到总结类型的回答)|
 
 doc_range
