@@ -202,11 +202,12 @@ doc_range
 - 返回
 ```
 <msg>包含了回复的信息内容</msg>
-<ref>包含了引用的ID，上标显示</ref>
-<source>包含了引用的文档信息，与引用的数字匹配</source>
+<ref>包含了引用的ID，上标显示。通常包含在 <msg></msg> 之中。 </ref>
+<source>一个对象结构体，其中包含了引用的文档信息。通常接在信息</msg>之后</source>
+</end> 所有数据发送完毕，会发送</end>的标记
 ```
 
-source
+<source>
 |字段名|类型|备注|
 |-|-|-|
 |id|number|引用的ID|
