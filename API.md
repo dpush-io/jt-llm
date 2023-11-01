@@ -67,6 +67,7 @@
 |-|-|-|
 |domain_id|number|域ID|
 |category|string|分类路径|
+|b_type|string|业务类型|
 |private|bool|是否私密|
 |uuid|string|文档唯一ID|
 |url|string|文档链接|
@@ -105,6 +106,7 @@
 |-|-|-|
 |domain_id|number|域ID|
 |category|string|分类路径|
+|b_type|string|业务类型|
 |private|bool|是否私密|
 |uuid|string|文档UUID|
 |url|string|文档链接|
@@ -117,6 +119,8 @@
 |字段名|类型|备注|
 |-|-|-|
 |job_id|number|任务ID|
+
+
 
 
 ## ~~5、发起文档对话【已废弃】~~
@@ -170,7 +174,7 @@
 |status|number|0-未开始；1-正在执行；2-执行成功；3-执行失败；99-任务失败，等待人工处理|
 |step|number|当前进度|
 
-## 8、批量操作文档的所属分类
+## 8、批量操作文档的所属分类 (del)
 请求方式：POST
 - 参数
 
@@ -198,6 +202,7 @@
 |message|string|发送的消息内容|
 |doc_range|object|回答需要查找的范围|
 |generalize|bool|是否泛化|
+|generalize_b_type|object|泛化业务类型|
 |is_summary|bool|是否是总结模式(默认为否，如果message提问方式是总结类，则会自动切换到总结类型的回答)|
 
 doc_range
@@ -217,6 +222,7 @@ doc_range
 <msg>包含了回复的信息内容</msg>
 <ref>包含了引用的ID，上标显示。通常包含在 <msg></msg> 之中。 </ref>
 <source>一个对象结构体，其中包含了引用的文档信息。通常接在信息</msg>之后</source>
+
 </end> 所有数据发送完毕，会发送</end>的标记
 ```
 
@@ -229,3 +235,13 @@ source
 |doc_name|string|引用的文档名|
 |score|number|匹配度分数|
 |page|number|引用段落所属页码|
+
+
+##恢复文档（批量，单个）
+del 8
+
+##通过文档得到3个问题 doc_range
+
+##stop 
+
+#模拟连接
