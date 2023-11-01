@@ -193,17 +193,24 @@
 doc_range
 |字段名|类型|备注|
 |-|-|-|
-|L1|string|一级分类|
-|L2|string|二级分类|
+|category|string|分类路径|
 |ids|[]string|需要包含的文章id|
 
-- L1, L2... 可以无限扩展。
-- L1 和  ids 只需要传入一类，如果两类都传入，则优先考虑 ids，忽略分类信息请注意。
+- category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
+- category 和 ids 只需传其中一个，如果两个都传入，则只读取ids，忽略分类路径。
 
 - 返回
 ```
 <msg>包含了回复的信息内容</msg>
-<ref>包含了引用的数字，上标显示</ref>
+<ref>包含了引用的ID，上标显示</ref>
 <source>包含了引用的文档信息，与引用的数字匹配</source>
 ```
 
+source
+|字段名|类型|备注|
+|-|-|-|
+|id|number|引用的ID|
+|doc_id|string|引用文档的ID|
+|doc_name|string|引用的文档名|
+|score|number|匹配度分数|
+|page|number|引用段落所属页码|
