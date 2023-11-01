@@ -204,11 +204,13 @@ doc_range
 |字段名|类型|备注|
 |-|-|-|
 |category|string|分类路径|
-|ids|[]string|需要包含的文章id|
+|b_type|[]string|所有业务类型|
+|ids|[]string|所有文章id|
 
 注：
 - category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
-- category 和 ids 只需传其中一个，如果两个都传入，则只读取ids，忽略分类路径。
+- b_type: 允许包含多个业务类型
+- category 和 b_type 可以同时传入也可单独传入。 当ids也传入的情况下，优先考虑ids 。 优先级： ids> category/b_type
 
 - 返回
 ```
