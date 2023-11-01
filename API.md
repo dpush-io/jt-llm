@@ -1,7 +1,8 @@
 # 版本 0.2.0 更新内容
 1. 废弃 5、发起文档对话；6、获取会话ws链接。改为直接与 websocket 交互。
-1. 文档的分类从只记录直接所属分类ID改为从上到下的分类ID路径，涉及：2、创建文档；4、更新文档。
-1. 新增 8、批量操作文档的所属分类。
+1. 文档的分类从只记录直接所属分类改为从上到下的分类路径，涉及：2、创建文档；4、更新文档。
+1. 新增 8、批量操作文档的所属分类；9、websocket发送数据。
+1. |private|bool|是否私密| 字段为预留，不做实际处理，可不传。
 
 
 # 接口
@@ -65,11 +66,14 @@
 |字段名|类型|备注|
 |-|-|-|
 |domain_id|number|域ID|
-|cat_id_path|[]number|分类ID路径|
+|category|string|分类路径|
 |private|bool|是否私密|
 |uuid|string|文档唯一ID|
 |url|string|文档链接|
 |md5|string|文档md5值|
+
+注：
+- category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
 
 - 返回
 
@@ -100,12 +104,14 @@
 |字段名|类型|备注|
 |-|-|-|
 |domain_id|number|域ID|
-|cat_id_path|[]number|分类ID路径|
+|category|string|分类路径|
 |private|bool|是否私密|
 |uuid|string|文档UUID|
 |url|string|文档链接|
 |md5|string|文档md5值|
 
+注：
+- category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
 - 返回
 
 |字段名|类型|备注|
@@ -171,8 +177,11 @@
 |字段名|类型|备注|
 |-|-|-|
 |domain_id|number|域ID|
-|cat_id_path|[]number|最新的所属分类ID路径|
+|category|string|最新的分类路径|
 |uuids|[]string|文档UUID数组|
+
+注：
+- category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
 
 - 返回
 
@@ -196,6 +205,7 @@ doc_range
 |category|string|分类路径|
 |ids|[]string|需要包含的文章id|
 
+注：
 - category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
 - category 和 ids 只需传其中一个，如果两个都传入，则只读取ids，忽略分类路径。
 
