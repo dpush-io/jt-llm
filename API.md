@@ -1,12 +1,5 @@
-# 版本 0.2.0 更新内容
-1. 废弃 5、发起文档对话；6、获取会话ws链接。改为直接与 websocket 交互。
-1. 文档的分类从只记录直接所属分类改为从上到下的分类路径，涉及：2、创建文档；4、更新文档。
-1. 新增 8、批量操作文档的所属分类；9、websocket发送数据。
-1. |private|bool|是否私密| 字段为预留，不做实际处理，可不传。
-
-
 # 接口
-- 版本：0.2.0
+- 版本：0.3.0
 - 请求地址：--
 - 内容格式：Content-Type: applicaton/json
 - 响应：
@@ -28,53 +21,21 @@
   }
 ```
 
-## 0、新增域
+## 1、批量创建文档
 请求方式：POST
 
-- 参数：无
-
-- 响应
-
-|字段名|类型|备注|
-|-|-|-|
-|domain_id|number|域ID|
-
-
-## 1、分类变更
-请求方式：POST
+地址: /doc/new
 - 参数
 
 |字段名|类型|备注|
 |-|-|-|
 |domain_id|number|域ID|
-|cat_id|number|分类ID|
-|parent_id|number|分类的父ID（更新的时候传新的父ID）|
-|private|bool|是否私密|
-|action|string|增删改：add、delete、update|
-
-- 响应
-
-|字段名|类型|备注|
-|-|-|-|
-|job_id|number|任务ID|
-
-
-## 2、创建文档
-请求方式：POST
-- 参数
-
-|字段名|类型|备注|
-|-|-|-|
-|domain_id|number|域ID|
-|category|string|分类路径|
-|b_type|string|业务类型|
-|private|bool|是否私密|
-|uuid|string|文档唯一ID|
-|url|string|文档链接|
-|md5|string|文档md5值|
-
-注：
-- category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
+|docs|[]object|文档对象数组|
+|- b_type|string|业务类型|
+|- private|bool|是否私密|
+|- uuid|string|文档唯一ID|
+|- url|string|文档链接|
+|- md5|string|文档md5值|
 
 - 返回
 
@@ -83,14 +44,14 @@
 |job_id|number|任务ID|
 
 
-## 3、删除文档
+## 2、批量删除文档
 请求方式：POST
 - 参数
 
 |字段名|类型|备注|
 |-|-|-|
 |domain_id|number|域ID|
-|uuid|string|文档唯一ID|
+|uuids|[]string|文档唯一ID数组|
 
 - 返回
 
@@ -98,7 +59,7 @@
 |-|-|-|
 |job_id|number|任务ID|
 
-## 4、更新文档 （del）
+## 4、更新文档
 请求方式：POST
 - 参数
 
@@ -123,43 +84,26 @@
 
 
 
-## ~~5、发起文档对话【已废弃】~~
+## 3、批量恢复文档
 请求方式：POST
 - 参数
 
 |字段名|类型|备注|
 |-|-|-|
 |domain_id|number|域ID|
-|uuids|[]string|文档UUID数组|
-|cat_ids|[]number|分类ID数组|
-|question|string|问题|
-|generalize|bool|是否泛化|
-|mode|string|对话模式：chat、summary|
+|uuids|[]string|文档唯一ID数组|
 
 - 返回
 
 |字段名|类型|备注|
 |-|-|-|
 |job_id|number|任务ID|
-
-## ~~6、获取会话ws链接【已废弃】~~
-请求方式：POST
-- 参数
-
-|字段名|类型|备注|
-|-|-|-|
-|domain_id|number|域ID|
-|job_id|number|任务ID|
-
-- 返回
-
-|字段名|类型|备注|
-|-|-|-|
-|ws_url|string|会话ws链接|
 
 
 ## 7、查询任务状态
 请求方式：POST
+
+地址: /doc/new
 - 参数
 
 |字段名|类型|备注|
@@ -172,26 +116,10 @@
 |字段名|类型|备注|
 |-|-|-|
 |status|number|0-未开始；1-正在执行；2-执行成功；3-执行失败；99-任务失败，等待人工处理|
-|step|number|当前进度|
+|detail|[]object|当前进度，数组|
+|- related_id|string|任务的子项关联的ID，如文档uuid等|
+|- status|number|0-未开始；1-正在执行；2-执行成功；3-执行失败；99-任务失败，等待人工处理|
 
-## 8、批量操作文档的所属分类 (del)
-请求方式：POST
-- 参数
-
-|字段名|类型|备注|
-|-|-|-|
-|domain_id|number|域ID|
-|category|string|最新的分类路径|
-|uuids|[]string|文档UUID数组|
-
-注：
-- category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
-
-- 返回
-
-|字段名|类型|备注|
-|-|-|-|
-|job_id|number|任务ID|
 
 ## 9、websocket发送数据
 请求方式：ws
@@ -241,6 +169,6 @@ del 8
 
 ##通过文档得到3个问题 doc_range
 
-##stop 
+##stop
 
 #模拟连接
