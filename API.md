@@ -46,6 +46,8 @@
 
 ## 2、批量删除文档
 请求方式：POST
+
+地址: /doc/delete
 - 参数
 
 |字段名|类型|备注|
@@ -58,34 +60,12 @@
 |字段名|类型|备注|
 |-|-|-|
 |job_id|number|任务ID|
-
-## 4、更新文档
-请求方式：POST
-- 参数
-
-|字段名|类型|备注|
-|-|-|-|
-|domain_id|number|域ID|
-|category|string|分类路径|
-|b_type|string|业务类型|
-|private|bool|是否私密|
-|uuid|string|文档UUID|
-|url|string|文档链接|
-|md5|string|文档md5值|
-
-注：
-- category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
-- 返回
-
-|字段名|类型|备注|
-|-|-|-|
-|job_id|number|任务ID|
-
-
 
 
 ## 3、批量恢复文档
 请求方式：POST
+
+地址: /doc/recover
 - 参数
 
 |字段名|类型|备注|
@@ -98,12 +78,29 @@
 |字段名|类型|备注|
 |-|-|-|
 |job_id|number|任务ID|
+
+
+## 4、内部任务结果回调
+请求方式：POST
+
+地址: /job/callback
+- 参数
+
+|字段名|类型|备注|
+|-|-|-|
+|job_id|number|任务ID|
+|related_id|string|任务关联ID|
+|status|number|2-执行成功；3-执行失败；|
+
+- 返回
+
+http status code 200 表示接收成功
 
 
 ## 7、查询任务状态
 请求方式：POST
 
-地址: /doc/new
+地址: /job/query
 - 参数
 
 |字段名|类型|备注|
