@@ -14,6 +14,7 @@
 | doc_name | string | 是 |  | 文档的名称 |
 | category | string | 否 |  | 文档分类路径 |
 | b_type | string | 是 |  | 文档的商业类型 |
+| domain_id | string | 是 |  | 文档的所属域ID |
 | chunk_size | int | 否 | 512 | 分块大小 |
 | chunk_overlap | int | 否 | 100 | 分块重叠大小 |
 | project_name | string | 否 | "default" | 项目名称 |
@@ -47,9 +48,10 @@
 
 | 字段名 | 类型 | 备注 |
 | --- | --- | --- |
-| category | array/string | 分类过滤器 |
-| b_type | array/string | 业务类型过滤器 |
-| ids | array/string | 文档ID过滤器 |
+| category | string | 分类过滤器 |
+| b_type | array | 业务类型过滤器 |
+| ids | array | 文档ID过滤器 |
+| domain_id | string | 是 |  | 文档的所属域ID |
 
 - 返回
 
