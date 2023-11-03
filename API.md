@@ -34,6 +34,7 @@
 |- b_type|string|业务类型|
 |- private|bool|是否私密|
 |- uuid|string|文档唯一ID|
+|- name|string|文档名|
 |- url|string|文档链接|
 |- md5|string|文档md5值|
 
