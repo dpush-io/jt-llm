@@ -66,7 +66,7 @@ md_del_document_template = """
 ## 标记文档为删除状态
 请求方式：POST
 
-地址: [请提供具体的请求地址]
+地址: /delete
 
 - 参数
 
@@ -89,7 +89,7 @@ md_recover_document_template = """
 ## 恢复标记为删除的文档
 请求方式：POST
 
-地址: [请提供具体的请求地址]
+地址: /recover
 
 - 参数
 
@@ -112,7 +112,7 @@ md_force_del_document_template = """
 ## 强制删除文档
 请求方式：POST
 
-地址: [请提供具体的请求地址]
+地址: /force_delete
 
 - 参数
 
