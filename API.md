@@ -81,23 +81,6 @@
 |job_id|number|任务ID|
 
 
-## 4、内部任务结果回调
-请求方式：POST
-
-地址: /job/callback
-- 参数
-
-|字段名|类型|备注|
-|-|-|-|
-|job_id|number|任务ID|
-|related_id|string|任务关联ID|
-|status|number|2-执行成功；3-执行失败；|
-
-- 返回
-
-http status code 200 表示接收成功
-
-
 ## 7、查询任务状态
 请求方式：POST
 
