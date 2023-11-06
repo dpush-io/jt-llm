@@ -151,7 +151,7 @@ del 8
 ## 通过文档得到3个问题 doc_range
 请求方式：http
 地址: http://89.58.53.238:9696/create_question_template
-- 参数
+- 参数 
 
 |字段名|类型|备注|
 |-|-|-|
