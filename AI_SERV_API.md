@@ -1,5 +1,20 @@
- 
- 
+
+# 内部任务结果回调
+请求方式：POST
+
+地址: /job/callback
+- 参数
+
+|字段名|类型|备注|
+|-|-|-|
+|job_id|number|任务ID|
+|status|number|2-执行成功；3-执行失败；|
+
+- 返回
+
+http status code 200 表示接收成功
+
+
 ## 异步文档嵌入
 请求方式：POST
 
@@ -30,7 +45,7 @@
 | --- | --- | --- |
 | job_id | string | 异步任务的唯一标识符 |
 
- 
+
 
 ## 更新或插入文档元数据
 请求方式：POST
@@ -60,8 +75,8 @@
 | job_id | string | 异步任务的唯一标识符 |
 | status | string | 任务状态 |
 
- 
- 
+
+
 md_del_document_template = """
 ## 标记文档为删除状态
 请求方式：POST
@@ -80,10 +95,10 @@ md_del_document_template = """
 | --- | --- | --- |
 | job_id | string | 异步任务的唯一标识符 |
 | status | string | 任务状态 |
- 
 
 
- 
+
+
 
 md_recover_document_template = """
 ## 恢复标记为删除的文档
@@ -103,7 +118,7 @@ md_recover_document_template = """
 | --- | --- | --- |
 | job_id | string | 异步任务的唯一标识符 |
 | status | string | 任务状态 |
- 
+
 
 
  handle_force_del_document
@@ -127,4 +142,3 @@ md_force_del_document_template = """
 | job_id | string | 异步任务的唯一标识符 |
 | status | string | 任务状态 |
 
- 
