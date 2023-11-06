@@ -148,7 +148,45 @@ source
 ##恢复文档（批量，单个）
 del 8
 
-##通过文档得到3个问题 doc_range
+## 通过文档得到3个问题 doc_range
+请求方式：http
+地址: http://89.58.53.238:9696/create_question_template
+- 参数
+
+|字段名|类型|备注|
+|-|-|-|
+ 
+|doc_range|object|回答需要查找的范围|
+ 
+doc_range
+|字段名|类型|备注|
+|-|-|-|
+|category|string|分类路径|
+|b_type|[]string|所有业务类型|
+|ids|[]string|所有文章id|
+
+注：
+- category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
+- b_type: 允许包含多个业务类型
+- category 和 b_type 可以同时传入也可单独传入。 当ids也传入的情况下，优先考虑ids 。 优先级： ids> category/b_type
+
+
+返回
+ 
+|字段名|类型|备注|
+|-|-|-|
+|question_template|string|生成的多条问题|
+ 
+
+source
+
+|字段名|类型|备注|
+|-|-|-|
+|id|number|引用的ID|
+|doc_id|string|引用文档的ID|
+|doc_name|string|引用的文档名|
+|score|number|匹配度分数|
+|page|number|引用段落所属页码|
 
 ##stop
 

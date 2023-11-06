@@ -18,7 +18,7 @@ http status code 200 表示接收成功
 ## 异步文档嵌入
 请求方式：POST
 
-地址: [请提供具体的请求地址]
+地址: /embedding
 
 - 参数
 
@@ -50,7 +50,7 @@ http status code 200 表示接收成功
 ## 更新或插入文档元数据
 请求方式：POST
 
-地址: [请提供具体的请求地址]
+地址: /update_metadata
 
 - 参数
 
@@ -141,4 +141,6 @@ md_force_del_document_template = """
 | --- | --- | --- |
 | job_id | string | 异步任务的唯一标识符 |
 | status | string | 任务状态 |
+
+## 指定范围生成数个问题
 
