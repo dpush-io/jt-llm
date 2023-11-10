@@ -4,7 +4,7 @@ import time
 import websocket
 import threading
 
-WS_URL = "ws://localhost:51155"
+WS_URL = "ws://89.58.53.238:51155"
 
 
 def on_message(ws, message):
@@ -36,18 +36,18 @@ def on_open(ws):
                 # break
             jdata = {
                 "message": data,
-                "doc_range": {"category": "", "b_type": [], "ids": ["doc_id_123"]},
+                "doc_range": {"category": "", "b_type": [], "ids": ["doc_id_666"]},
                 "is_summary": False,
             }
             ws.send(json.dumps(jdata).encode("utf-8"))
 
             ###################
             # 等待十秒 发送一个停止信号
-            time.sleep(10)
+            """ time.sleep(10)
             # 发送停止消息
             print("send stop")
             stop_message = {"stop_immediately": True}
-            ws.send(json.dumps(stop_message).encode("utf-8")) 
+            ws.send(json.dumps(stop_message).encode("utf-8"))  """
             ###################
 
     threading.Thread(target=run).start()

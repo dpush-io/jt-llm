@@ -190,6 +190,13 @@ source
 |score|number|匹配度分数|
 |page|number|引用段落所属页码|
 
-##stop
+## stop
+发送停止请求，立即暂停当前聊天任务
+请求方式：ws
+- 参数
 
+|字段名|类型|备注|
+|-|-|-|
+|stop_immediately|bool|是否立即停止|
+ 
 #模拟连接
