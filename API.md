@@ -29,7 +29,7 @@
 
 |字段名|类型|备注|
 |-|-|-|
-|domain_id|number|域ID|
+|domain_id|string|域ID|
 |docs|[]object|文档对象数组|
 |- b_type|string|业务类型|
 |- private|bool|是否私密|
@@ -53,7 +53,7 @@
 
 |字段名|类型|备注|
 |-|-|-|
-|domain_id|number|域ID|
+|domain_id|string|域ID|
 |uuids|[]string|文档唯一ID数组|
 
 - 返回
@@ -71,7 +71,7 @@
 
 |字段名|类型|备注|
 |-|-|-|
-|domain_id|number|域ID|
+|domain_id|string|域ID|
 |uuids|[]string|文档唯一ID数组|
 
 - 返回
@@ -89,7 +89,7 @@
 
 |字段名|类型|备注|
 |-|-|-|
-|domain_id|number|域ID|
+|domain_id|string|域ID|
 |job_id|number|任务ID|
 
 - 返回
@@ -151,13 +151,13 @@ del 8
 ## 通过文档得到3个问题 doc_range
 请求方式：http
 地址: http://89.58.53.238:9696/create_question_template
-- 参数 
+- 参数
 
 |字段名|类型|备注|
 |-|-|-|
- 
+
 |doc_range|object|回答需要查找的范围|
- 
+
 doc_range
 |字段名|类型|备注|
 |-|-|-|
@@ -174,11 +174,11 @@ doc_range
 
 
 返回
- 
+
 |字段名|类型|备注|
 |-|-|-|
 |question_template|string|生成的多条问题|
- 
+
 
 source
 
@@ -198,5 +198,5 @@ source
 |字段名|类型|备注|
 |-|-|-|
 |stop_immediately|bool|是否立即停止|
- 
+
 #模拟连接
