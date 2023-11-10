@@ -161,6 +161,7 @@ del 8
 doc_range
 |字段名|类型|备注|
 |-|-|-|
+|domain_id|[]string|域ID|
 |category|string|分类路径|
 |b_type|[]string|所有业务类型|
 |ids|[]string|所有文章id|
@@ -169,6 +170,7 @@ doc_range
 - category: 必须从一级分类开始,用 / 分割不同级别的路径。 例如： 高速公路/公路养护/路基病害
 - b_type: 允许包含多个业务类型
 - category 和 b_type 可以同时传入也可单独传入。 当ids也传入的情况下，优先考虑ids 。 优先级： ids> category/b_type
+- domain_id：必传。如果是行业研究，可以传入['reportsay']。 如果传入的domain_id 包含 reportsay, 则问答只会考虑 “行业研究” 范围内的报告。
 
 
 返回
