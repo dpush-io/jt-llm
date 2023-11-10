@@ -81,6 +81,36 @@
 |job_id|number|任务ID|
 
 
+## 4、查询研报文档信息
+请求方式：POST
+
+地址: /report/info
+- 参数
+
+|字段名|类型|备注|
+|-|-|-|
+|ids|[]string|片段ID数组|
+
+- 返回
+
+|字段名||类型|备注|
+|-|-|-|-|
+|docid||map|片段ID与文档ID对应关系|
+|- key||string|片段ID|
+|- value||string|文档ID|
+|docinfo||map|文档信息|
+|- key||string|文档ID|
+|- value||object|文档信息|
+||- id|number|文档ID|
+||- name|string|文档名称|
+||- industry_name|string|行业名称|
+||- url|string|文档链接|
+||- category|string|文档分类|
+||- org_short_name|string|发布机构|
+||- author|string|作者|
+||- publish_date|string|发布日期|
+
+
 ## 7、查询任务状态
 请求方式：POST
 
