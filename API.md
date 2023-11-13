@@ -129,7 +129,47 @@
 |status|number|0-未开始；1-正在执行；2-执行成功；3-执行失败；99-任务失败，等待人工处理|
 |detail|[]object|当前进度，数组|
 |- related_id|string|任务的子项关联的ID，如文档uuid等|
-|- status|number|0-未开始；1-正在执行；2-执行成功；3-执行失败；99-任务失败，等待人工处理|
+|- status|number|子项执行状态：0-未开始；1-正在执行；2-执行成功；3-执行失败；99-执行失败，等待人工处理|
+
+## 8、批量查询任务状态
+请求方式：POST
+
+地址: /job/batch_query
+- 参数
+
+|字段名|类型|备注|
+|-|-|-|
+|domain_id|string|域ID|
+|job_ids|[]number|任务ID数组|
+
+- 返回
+
+```json
+{
+    "status": 1000,
+    "msg": "",
+    "data": {
+        "60": {
+            "status": 2,
+            "detail": [
+                {
+                    "related_id": "4",
+                    "status": 2
+                }
+            ]
+        }
+    }
+}
+```
+
+|字段名||类型|备注|
+|-|-|-|-|
+|key||string|任务ID|
+|value||object|任务信息|
+|- status||number|0-未开始；1-正在执行；2-执行成功；3-执行失败；99-任务失败，等待人工处理|
+|- detail||[]object|当前进度，数组|
+||- related_id|string|任务的子项关联的ID，如文档uuid等|
+||- status|number|子项执行状态：0-未开始；1-正在执行；2-执行成功；3-执行失败；99-执行失败，等待人工处理|
 
 
 ## 9、websocket发送数据
